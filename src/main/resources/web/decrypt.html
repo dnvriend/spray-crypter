@@ -1,0 +1,11 @@
+<div class="input-group">
+    <div class="input-group">
+        <span class="input-group-addon">Decrypt</span>
+        <input ng-class="{hidden: getDisabled('decrypt')}" ng-model="decrypt.text" type="text"
+               class="form-control" placeholder="{{getPlaceholderText('decrypt')}}">
+        <input ng-class="" ng-model="decrypt.decrypted"
+               type="text" class="form-control"
+               placeholder="{{getPlaceholderText('decrypted')}}">
+    </div>
+    <button ng-click="submit()" type="button" class="btn btn-success">Decrypt</button>
+</div>
