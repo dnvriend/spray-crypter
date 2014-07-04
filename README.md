@@ -8,6 +8,25 @@ the activator-laucher will do the rest:
 
     $ ./activator 'run-main com.example.Main'
 
+# Docker
+When you have Docker installed, you can launch a [containerized version](https://registry.hub.docker.com/u/dnvriend/crypter/) using the following command:
+
+    $ sudo docker run -d -P dnvriend/crypter
+    
+Then check which local port has been mapped to the VM
+    
+    $ sudo docker ps
+    
+And note the entries in the PORTS column eg:
+
+    CONTAINER ID        IMAGE                     COMMAND                CREATED             STATUS              PORTS                     NAMES
+    ade95dac9e4e        dnvriend/crypter:latest   /bin/sh -c java -jar   5 minutes ago       Up 5 minutes        0.0.0.0:49154->8080/tcp   sick_darwin
+
+In this example, the local port of my Vagrant VM has been mapped to port 49154 to the port of the crypter, and that is 8080. 
+Point the browser to the following url (change the port to your mapped port):
+
+    http://192.168.99.99:49154/web/index.html
+
 # Creating one jar
 For distribution of our Spray applications, we can use the one-jar plugin, just type:
 
