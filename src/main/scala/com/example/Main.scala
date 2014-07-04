@@ -78,8 +78,9 @@ object Main extends App with SimpleRoutingApp {
   implicit val timeout = Timeout(60 seconds)
 
   val securityService = system.actorOf(Props(new SecurityService))
+  val config = Config(system)
 
-  startServer(interface = "localhost", port = 8080) {
+  startServer(interface = config.bindAddress, port = 8080) {
     pathPrefix("web") {
       getFromResourceDirectory("web")
 //      getFromDirectory("/Users/dennis/projects/spray-crypter/src/main/resources/web")
