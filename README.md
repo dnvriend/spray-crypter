@@ -9,6 +9,7 @@ the activator-laucher will do the rest:
     $ ./activator 'run-main com.example.Main'
 
 # Docker
+## Run the image
 When you have Docker installed, you can launch a [containerized version](https://registry.hub.docker.com/u/dnvriend/crypter/) using the following command:
 
     $ sudo docker run -d -P dnvriend/crypter
@@ -26,6 +27,25 @@ In this example, the local port of my Vagrant VM has been mapped to port 49154 t
 Point the browser to the following url (change the port to your mapped port):
 
     http://192.168.99.99:49154/web/index.html
+
+## Creating the image
+Inside Vagrant navigate to
+ 
+    $ cd /spray-crypter
+
+Then type
+
+	$ sudo docker build --rm -t dnvriend/crypter .
+
+This image is more advanced, try giving it arguments:
+
+    $ sudo docker run -d -P --env PASS_PHRASE=abcdefghijklmnop --name mycrypt dnvriend/crypter
+
+## Pusing the image to [docker hub](https://hub.docker.com/)
+This is just an example:
+	
+	$ sudo docker push dnvriend/crypter
+
 
 # Creating one jar
 For distribution of our Spray applications, we can use the one-jar plugin, just type:

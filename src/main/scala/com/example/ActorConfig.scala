@@ -7,9 +7,12 @@ object Config {
 }
 
 class Config(system: ActorSystem) {
+
   val config = system.settings.config.getConfig("spray-crypter")
 
   def bindAddress = config.getString("bind-address")
+  def bindPort = config.getInt("bind-port")
+  def passPhrase = config.getString("passPhrase")
 }
 
 trait ActorConfig { this: Actor =>

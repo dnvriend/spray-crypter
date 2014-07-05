@@ -21,8 +21,9 @@ trait Security {
 }
 
 trait AESSecurity extends Security {
+  def config: Config
   object AES {
-    val passPhrase = "abcdefghijklmnop"
+    val passPhrase = config.passPhrase
     val cipher = new AesCipherService
   }
 
@@ -55,6 +56,7 @@ object SecurityService {
 
 class SecurityService extends Actor with ActorLogging with AESSecurity {
   import SecurityService._
+  val config = Config(context.system)
 
   override def receive: Receive = {
     case EncryptRequest(Some(text)) =>
@@ -80,7 +82,7 @@ object Main extends App with SimpleRoutingApp {
   val securityService = system.actorOf(Props(new SecurityService))
   val config = Config(system)
 
-  startServer(interface = config.bindAddress, port = 8080) {
+  startServer(interface = config.bindAddress, port = config.bindPort) {
     pathPrefix("web") {
       getFromResourceDirectory("web")
 //      getFromDirectory("/Users/dennis/projects/spray-crypter/src/main/resources/web")
