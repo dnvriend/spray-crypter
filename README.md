@@ -12,7 +12,7 @@ the activator-laucher will do the rest:
 ## Run the image
 When you have Docker installed, you can launch a [containerized version](https://registry.hub.docker.com/u/dnvriend/crypter/) using the following command:
 
-    $ sudo docker run -d -P dnvriend/crypter
+    $ sudo docker run -d -P dnvriend/spray-crypter
     
 Then check which local port has been mapped to the VM
     
@@ -21,7 +21,7 @@ Then check which local port has been mapped to the VM
 And note the entries in the PORTS column eg:
 
     CONTAINER ID        IMAGE                     COMMAND                CREATED             STATUS              PORTS                     NAMES
-    ade95dac9e4e        dnvriend/crypter:latest   /bin/sh -c java -jar   5 minutes ago       Up 5 minutes        0.0.0.0:49154->8080/tcp   sick_darwin
+    ade95dac9e4e        dnvriend/spray-crypter:latest   /bin/sh -c java -jar   5 minutes ago       Up 5 minutes        0.0.0.0:49154->8080/tcp   sick_darwin
 
 In this example, the local port of my Vagrant VM has been mapped to port 49154 to the port of the crypter, and that is 8080. 
 Point the browser to the following url (change the port to your mapped port):
@@ -35,17 +35,16 @@ Inside Vagrant navigate to
 
 Then type
 
-	$ sudo docker build --rm -t dnvriend/crypter .
+	$ sudo docker build --rm -t dnvriend/spray-crypter .
 
 This image is more advanced, try giving it arguments:
 
-    $ sudo docker run -d -P --env PASS_PHRASE=abcdefghijklmnop --name mycrypt dnvriend/crypter
+    $ sudo docker run -d -P --env PASS_PHRASE=abcdefghijklmnop --name mycrypt dnvriend/spray-crypter
 
 ## Pusing the image to [docker hub](https://hub.docker.com/)
 This is just an example:
 	
 	$ sudo docker push dnvriend/crypter
-
 
 # Creating one jar
 For distribution of our Spray applications, we can use the one-jar plugin, just type:
