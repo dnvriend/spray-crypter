@@ -10,7 +10,7 @@ the activator-laucher will do the rest:
 
 # Docker
 ## Run the image
-When you have Docker installed, you can launch a [containerized version](https://registry.hub.docker.com/u/dnvriend/crypter/) using the following command:
+When you have Docker installed, you can launch a [containerized version](https://registry.hub.docker.com/u/dnvriend/spray-crypter/) using the following command:
 
     $ sudo docker run -d -P dnvriend/spray-crypter
     
