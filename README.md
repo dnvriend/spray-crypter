@@ -44,7 +44,7 @@ This image is more advanced, try giving it arguments:
 ## Pusing the image to [docker hub](https://hub.docker.com/)
 This is just an example:
 	
-	$ sudo docker push dnvriend/crypter
+	$ sudo docker push dnvriend/spray-crypter
 
 # Creating one jar
 For distribution of our Spray applications, we can use the one-jar plugin, just type:
